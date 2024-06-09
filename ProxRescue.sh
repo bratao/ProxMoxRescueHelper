@@ -219,7 +219,7 @@ run_qemu() {
     	QEMU_COMMON_ARGS="-bios /usr/share/ovmf/OVMF.fd $QEMU_COMMON_ARGS"
     fi
     if [ "$task" == "install" ]; then
-        QEMU_CDROM_ARGS="-cdrom /tmp/proxmox.iso -boot d"
+        QEMU_CDROM_ARGS="-drive file=/tmp/proxmox.iso,index=$DISK_INDEX,media=cdrom -boot d"
         qemu-system-x86_64 $QEMU_COMMON_ARGS $QEMU_DISK_ARGS $QEMU_CDROM_ARGS
         echo -e "\nQemu running...."
         sleep 2
