@@ -116,7 +116,7 @@ print_logo() {
 }
 
 get_network_info() {
-    INTERFACE_NAME=$(udevadm info -q property /sys/class/net/eth0 | grep "ID_NET_NAME_PATH=" | cut -d'=' -f2)
+    INTERFACE_NAME=eno1
     IP_CIDR=$(ip addr show $INTERFACE_NAME | grep "inet\b" | awk '{print $2}')
     GATEWAY=$(ip route | grep default | awk '{print $3}')
     IP_ADDRESS=$(echo "$IP_CIDR" | cut -d'/' -f1)
